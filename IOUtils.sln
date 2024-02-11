@@ -1,0 +1,22 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOUtils", "IOUtils\IOUtils.csproj", "{55971F77-541C-4CBE-821A-7FC01531B5E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IOUtils.Tests", "IOUtils.Tests\IOUtils.Tests.csproj", "{CA277F07-5DF2-4A22-8297-6F61747CBB88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55971F77-541C-4CBE-821A-7FC01531B5E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55971F77-541C-4CBE-821A-7FC01531B5E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55971F77-541C-4CBE-821A-7FC01531B5E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55971F77-541C-4CBE-821A-7FC01531B5E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA277F07-5DF2-4A22-8297-6F61747CBB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA277F07-5DF2-4A22-8297-6F61747CBB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA277F07-5DF2-4A22-8297-6F61747CBB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA277F07-5DF2-4A22-8297-6F61747CBB88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
