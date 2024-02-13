@@ -18,6 +18,8 @@ internal static class ComparisonUtils {
     }
 
     internal static bool WithinRange<T>(this T input, T min, T max) where T : IComparable<T> {
+        if (min.GreaterThan(max))
+            throw new ArgumentException("The minimum value cannot be greater than the maximum value");
         return input.LessThanOrEqual(max) && input.GreaterThanOrEqual(min);
     }
 }
