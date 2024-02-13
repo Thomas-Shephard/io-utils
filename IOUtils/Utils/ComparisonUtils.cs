@@ -16,4 +16,8 @@ internal static class ComparisonUtils {
     internal static bool LessThanOrEqual<T>(this T input, T? value) where T : IComparable<T> {
         return !input.GreaterThan(value);
     }
+
+    internal static bool WithinRange<T>(this T input, T? min, T? max) where T : IComparable<T> {
+        return input.LessThanOrEqual(max) && input.GreaterThanOrEqual(min);
+    }
 }
