@@ -77,4 +77,13 @@ public class WithinRangeTests {
     public void ComparisonUtils_WithinRange_BothBounds_Invalid<T>(T value, T min, T max) where T : IComparable<T>, IMinMaxValue<T> {
         Assert.That(value.WithinRange(min, max), Is.False);
     }
+
+    [TestCase(1, 2, 1)]
+    [TestCase(-8L, -4L, -99L)]
+    [TestCase(50, 99, -100)]
+    [TestCase(0.01F, 0.01F, 0.001F)]
+    [TestCase(Math.E, Math.PI, Math.E)]
+    public void ComparisonUtils_WithinRange_MinGreaterThanMax_ThrowsException<T>(T value, T min, T max) where T : IComparable<T>, IMinMaxValue<T> {
+        Assert.Throws<ArgumentException>(() => value.WithinRange(min, max));
+    }
 }
