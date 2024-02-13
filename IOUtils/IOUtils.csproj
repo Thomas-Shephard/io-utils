@@ -6,6 +6,15 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <PropertyGroup>
+        <PackageId>IOUtils</PackageId>
+        <Authors>Thomas Shephard</Authors>
+        <Description>Input and output utility package for .NET</Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageLicenceFile>LICENCE</PackageLicenceFile>
+    </PropertyGroup>
+
     <ItemGroup>
         <InternalsVisibleTo Include="IOUtils.Tests"/>
     </ItemGroup>
