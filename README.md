@@ -14,10 +14,10 @@ NumericalInput is a generic class that allows for the retrieval of a numerical i
 ```csharp
 using IOUtils.Input;
 
-NumericalInput<int>.GetInput("Enter a whole number");
-NumericalInput<int>.GetInput("Enter a non-negative whole number", min: 0);
-NumericalInput<float>.GetInput("Enter a negative number", max: 0);
-NumericalInput<decimal>.GetInput("Enter a number between 0 and 100", min: 0, max: 100);
+int value = NumericalInput<int>.Get("Enter a whole number");
+long value = NumericalInput<long>.Get("Enter a non-negative whole number", min: 0);
+float value = NumericalInput<float>.Get("Enter a negative number", max: 0);
+decimal value = NumericalInput<decimal>.Get("Enter a number between 0 and 100", min: 0, max: 100);
 ```
 
 ## Contributions
