@@ -27,5 +27,5 @@ jobs:
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
           filename: coverage/**/coverage.cobertura.xml
-          thresholds: '60 80'
+          thresholds: '90 95'
           fail_below_min: true
