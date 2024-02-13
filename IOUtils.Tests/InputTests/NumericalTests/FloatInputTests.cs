@@ -16,7 +16,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_ValidInput_ReturnsValue<T>(string input, T expected) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        T actual = NumericalInput<T>.GetInput(Question, provider: mockProvider);
+        T actual = NumericalInput<T>.Get(Question, provider: mockProvider);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -31,7 +31,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_InvalidInput_ErrorOutput(string input) {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => NumericalInput<float>.GetInput(Question, provider: mockProvider));
+        Assert.Throws<InvalidOperationException>(() => NumericalInput<float>.Get(Question, provider: mockProvider));
 
         string[] expected = {
             Question,
@@ -49,7 +49,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_MinRange_ValidInput_ReturnsValue<T>(string input, T min, T expected) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        T actual = NumericalInput<T>.GetInput(Question, min, provider: mockProvider);
+        T actual = NumericalInput<T>.Get(Question, min, provider: mockProvider);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -62,7 +62,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_MinRange_InvalidInput_ErrorOutput<T>(string input, T min) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.GetInput(Question, min, provider: mockProvider));
+        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.Get(Question, min, provider: mockProvider));
 
         string[] expected = {
             Question,
@@ -80,7 +80,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_MaxRange_ValidInput_ReturnsValue<T>(string input, T max, T expected) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        T actual = NumericalInput<T>.GetInput(Question, max: max, provider: mockProvider);
+        T actual = NumericalInput<T>.Get(Question, max: max, provider: mockProvider);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -93,7 +93,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_MaxRange_InvalidInput_ErrorOutput<T>(string input, T max) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.GetInput(Question, max: max, provider: mockProvider));
+        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.Get(Question, max: max, provider: mockProvider));
 
         string[] expected = {
             Question,
@@ -111,7 +111,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_WithinRange_ValidInput_ReturnsValue<T>(string input, T min, T max, T expected) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        T actual = NumericalInput<T>.GetInput(Question, min, max, mockProvider);
+        T actual = NumericalInput<T>.Get(Question, min, max, mockProvider);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -124,7 +124,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_WithinRange_InvalidInput_ErrorOutput<T>(string input, T min, T max) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.GetInput(Question, min, max, mockProvider));
+        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.Get(Question, min, max, mockProvider));
 
         string[] expected = {
             Question,
@@ -142,7 +142,7 @@ public class FloatInputTests {
     public void NumericalInput_Float_ExactValue_InvalidInput_ErrorOutput<T>(string input, T minAndMax) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.GetInput(Question, minAndMax, minAndMax, mockProvider));
+        Assert.Throws<InvalidOperationException>(() => NumericalInput<T>.Get(Question, minAndMax, minAndMax, mockProvider));
 
         string[] expected = {
             Question,
@@ -158,6 +158,6 @@ public class FloatInputTests {
     [TestCase(99.99d, 99.989d)]
     [TestCase(0f, -1f)]
     public void NumericalInput_Float_MinGreaterThanMax_ThrowsException<T>(T min, T max) where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
-        Assert.Throws<ArgumentException>(() => NumericalInput<T>.GetInput(Question, min, max));
+        Assert.Throws<ArgumentException>(() => NumericalInput<T>.Get(Question, min, max));
     }
 }
