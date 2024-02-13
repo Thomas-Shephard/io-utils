@@ -18,7 +18,7 @@ public class ConsoleProviderTests {
 
         Assert.That(File.ReadAllText(TestFilePath), Is.EqualTo($"{TestMessage}{Console.Out.NewLine}"));
     }
-    
+
     [Test]
     public void ConsoleProvider_ReadLine_ReadsFromConsole() {
         IProvider provider = IProvider.Default;
