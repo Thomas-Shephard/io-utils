@@ -38,8 +38,8 @@ bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
 
 ## Contributions
 
-Contributions are welcome! Read the [CONTRIBUTING](CONTRIBUTING.md) guide for information.
+Contributions are welcome! Read the [CONTRIBUTING](https://github.com/Thomas-Shephard/io-utils/blob/main/CONTRIBUTING.md) guide for information.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) for details.
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/Thomas-Shephard/io-utils/blob/main/LICENSE) for details.
