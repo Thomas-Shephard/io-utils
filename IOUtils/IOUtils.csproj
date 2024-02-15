@@ -13,6 +13,8 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageLicenceFile>LICENCE</PackageLicenceFile>
+        <RepositoryUrl>https://github.com/Thomas-Shephard/io-utils.git</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 
     <ItemGroup>
