@@ -5,17 +5,17 @@ namespace IOUtils.Tests.InputTests.OptionTests;
 
 public class YesNoOptionTests {
     private const string Question = "Example question text";
-    
+
     [TestCase("1", true)]
     [TestCase("2", false)]
     public void OptionInput_YesNo_ValidInput_ReturnsValue(string input, bool expected) {
         MockProvider mockProvider = new(input);
 
-        bool actual = OptionInput.GetYesNoOption(Question, provider: mockProvider);
+        bool actual = OptionInput.GetYesNoOption(Question, mockProvider);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
-    
+
     [TestCase("3")]
     [TestCase("1.5")]
     [TestCase("1.0")]
@@ -29,7 +29,7 @@ public class YesNoOptionTests {
     public void OptionInput_YesNo_InvalidInput_ErrorOutput(string input) {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => OptionInput.GetYesNoOption(Question, provider: mockProvider));
+        Assert.Throws<InvalidOperationException>(() => OptionInput.GetYesNoOption(Question, mockProvider));
 
         string[] expected = {
             $"""
