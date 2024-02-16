@@ -9,7 +9,7 @@ public static class OptionInput {
 
         return options[responseIndex];
     }
-    
+
     public static bool GetYesNoOption(string question, IProvider? provider = null) {
         // The index of the "Yes" option is 0
         return GetOptionIndex(question, new[] { "Yes", "No" }, provider) == 0;
