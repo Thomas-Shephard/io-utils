@@ -21,18 +21,18 @@ string text = TextInput.GetText("Enter some text");
 string nonEmptyText = TextInput.GetNonEmptyText("Enter some (non-empty) text");
 ```
 
-### Retrieve numerical input from the user
+### Retrieve number input from the user
 
-NumericalInput is a generic class that allows for the retrieval of a numerical input from the user. Optionally, a
+NumberInput is a generic class that allows for the retrieval of a number from the user. Optionally, a
 minimum and maximum value can be specified to restrict the input range.
 
 ```csharp
 using IOUtils.Input;
 
-int value = NumericalInput<int>.Get("Enter a whole number");
-long value = NumericalInput<long>.Get("Enter a non-negative whole number", min: 0);
-float value = NumericalInput<float>.Get("Enter a negative number", max: 0);
-decimal value = NumericalInput<decimal>.Get("Enter a number between 0 and 100", min: 0, max: 100);
+int value = NumberInput<int>.GetNumber("Enter a whole number");
+long value = NumberInput<long>.GetNumber("Enter a non-negative whole number", min: 0);
+float value = NumberInput<float>.GetNumber("Enter a negative number", max: 0);
+decimal value = NumberInput<decimal>.GetNumber("Enter a number between 0 and 100", min: 0, max: 100);
 ```
 
 ### Retrieve option from the user
