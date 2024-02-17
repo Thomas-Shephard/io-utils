@@ -10,6 +10,17 @@ dotnet add package IOUtils
 
 ## Features
 
+### Retrieve text input from the user
+
+TextInput is a class that allows for the retrieval of text from the user.
+
+```csharp
+using IOUtils.Input;
+
+string text = TextInput.GetText("Enter some text");
+string nonEmptyText = TextInput.GetNonEmptyText("Enter some (non-empty) text");
+```
+
 ### Retrieve numerical input from the user
 
 NumericalInput is a generic class that allows for the retrieval of a numerical input from the user. Optionally, a
@@ -38,8 +49,10 @@ bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
 
 ## Contributions
 
-Contributions are welcome! Read the [CONTRIBUTING](https://github.com/Thomas-Shephard/io-utils/blob/main/CONTRIBUTING.md) guide for information.
+Contributions are welcome! Read
+the [CONTRIBUTING](https://github.com/Thomas-Shephard/io-utils/blob/main/CONTRIBUTING.md) guide for information.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](https://github.com/Thomas-Shephard/io-utils/blob/main/LICENSE) for details.
+This project is licensed under the MIT License. See
+the [LICENSE](https://github.com/Thomas-Shephard/io-utils/blob/main/LICENSE) for details.
