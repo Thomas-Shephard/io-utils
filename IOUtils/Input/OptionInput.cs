@@ -24,7 +24,7 @@ public static class OptionInput {
         for (int i = 0; i < options.Length; i++)
             questionStringBuilder.Append($"{Environment.NewLine}{i + 1}. {options[i]}");
 
-        // The index of the selected option is 1 less than the numerical input
-        return NumericalInput<int>.Get(questionStringBuilder.ToString(), 1, options.Length, provider) - 1;
+        // The index of the selected option is 1 less than the input number
+        return NumberInput<int>.GetNumber(questionStringBuilder.ToString(), 1, options.Length, provider) - 1;
     }
 }

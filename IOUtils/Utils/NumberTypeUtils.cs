@@ -2,7 +2,7 @@ using System.Numerics;
 
 namespace IOUtils.Utils;
 
-internal static class NumericalTypeUtils {
+internal static class NumberTypeUtils {
     private static readonly Dictionary<string, bool> TypeIsFloatingPoint = new();
 
     internal static bool IsFloatingPoint<T>() {

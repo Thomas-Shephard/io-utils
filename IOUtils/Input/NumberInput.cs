@@ -4,8 +4,8 @@ using IOUtils.Utils;
 
 namespace IOUtils.Input;
 
-public static class NumericalInput<T> where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
-    public static T Get(string question, T? min = null, T? max = null, IProvider? provider = null) {
+public static class NumberInput<T> where T : struct, INumberBase<T>, IComparable<T>, IMinMaxValue<T> {
+    public static T GetNumber(string question, T? min = null, T? max = null, IProvider? provider = null) {
         if (min is not null && max is not null && min.Value.GreaterThan(max.Value))
             throw new ArgumentException("The minimum value cannot be greater than the maximum value");
 
@@ -25,7 +25,7 @@ public static class NumericalInput<T> where T : struct, INumberBase<T>, ICompara
     }
 
     private static string GetErrorMessage(T? min, T? max) {
-        string typeDescription = NumericalTypeUtils.IsFloatingPoint<T>() ? "decimal number" : "whole number";
+        string typeDescription = NumberTypeUtils.IsFloatingPoint<T>() ? "decimal number" : "whole number";
 
         // Display the error message based on the provided min and max values
         return $"That was not valid, enter a {typeDescription}" + (min, max) switch {
