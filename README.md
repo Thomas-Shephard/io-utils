@@ -47,6 +47,17 @@ int optionIndex = OptionInput.GetOptionIndex("Select an option", new[] { "Option
 bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
 ```
 
+### Retrieve file path from the user
+
+FilePathInput is a class that allows for the retrieval of an existing file or directory path from the user.
+
+```csharp
+using IOUtils.Input;
+
+string filePath = FileInput.GetFilePath("Enter a file path");
+string directoryPath = FileInput.GetDirectoryPath("Enter a directory path");
+```
+
 ## Contributions
 
 Contributions are welcome! Read
