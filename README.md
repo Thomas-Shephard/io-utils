@@ -10,7 +10,7 @@ dotnet add package IOUtils
 
 ## Features
 
-### Retrieve text input from the user
+### Retrieve text from the user
 
 TextInput is a class that allows for the retrieval of text from the user.
 
@@ -21,7 +21,7 @@ string text = TextInput.GetText("Enter some text");
 string nonEmptyText = TextInput.GetNonEmptyText("Enter some (non-empty) text");
 ```
 
-### Retrieve number input from the user
+### Retrieve number from the user
 
 NumberInput is a generic class that allows for the retrieval of a number from the user. Optionally, a
 minimum and maximum value can be specified to restrict the input range.
