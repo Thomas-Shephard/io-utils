@@ -49,7 +49,7 @@ bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
 
 ### Retrieve file path from the user
 
-FilePathInput is a class that allows for the retrieval of an existing file or directory path from the user.
+FileInput is a class that allows for the retrieval of an existing file or directory path from the user.
 
 ```csharp
 using IOUtils.Input;

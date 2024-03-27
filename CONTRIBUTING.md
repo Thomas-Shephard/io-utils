@@ -20,9 +20,9 @@ To submit a pull request, follow these steps:
 
 ## Testing Guidelines
 To ensure that changes work as expected, follow these steps:
-- Use the provided MSTest framework to write tests
+- Use the provided NUnit test framework to write tests
 - Write tests for all new features or bug fixes
 - Ensure all tests pass before submitting a pull request
 
 ## Licence
-By contributing to IOUtils, you must agree that your contributions will be licensed under the MIT License. See the [LICENSE](LICENSE.md) for details.
+By contributing to IOUtils, you must agree that your contributions will be licensed under the MIT License. See the [LICENSE](https://github.com/Thomas-Shephard/io-utils/blob/main/LICENSE) for details.
