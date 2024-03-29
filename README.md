@@ -10,7 +10,9 @@ dotnet add package IOUtils
 
 ## Features
 
-### Retrieve text from the user
+### Input retrieval
+
+#### Retrieve text from the user
 
 TextInput is a class that allows for the retrieval of text from the user.
 
@@ -21,7 +23,7 @@ string text = TextInput.GetText("Enter some text");
 string nonEmptyText = TextInput.GetNonEmptyText("Enter some (non-empty) text");
 ```
 
-### Retrieve number from the user
+#### Retrieve number from the user
 
 NumberInput is a generic class that allows for the retrieval of a number from the user. Optionally, a
 minimum and maximum value can be specified to restrict the input range.
@@ -35,7 +37,7 @@ float value = NumberInput<float>.GetNumber("Enter a negative number", max: 0);
 decimal value = NumberInput<decimal>.GetNumber("Enter a number between 0 and 100", min: 0, max: 100);
 ```
 
-### Retrieve option from the user
+#### Retrieve option from the user
 
 OptionInput is a class that allows for the retrieval of an option from the user.
 
@@ -47,7 +49,7 @@ int optionIndex = OptionInput.GetOptionIndex("Select an option", new[] { "Option
 bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
 ```
 
-### Retrieve file path from the user
+#### Retrieve file path from the user
 
 FileInput is a class that allows for the retrieval of an existing file or directory path from the user.
 
@@ -56,6 +58,50 @@ using IOUtils.Input;
 
 string filePath = FileInput.GetFilePath("Enter a file path");
 string directoryPath = FileInput.GetDirectoryPath("Enter a directory path");
+```
+
+### Encoding
+
+#### Available encodings
+
+The following encoders are available:
+
+| Encoder                  | Character set       |
+|--------------------------|---------------------|
+| Base2Encoder             | 0-1                 |
+| Base10Encoder            | 0-9                 |
+| Base16Encoder            | 0-9, A-F            |
+| Base36Encoder            | 0-9, A-Z            |
+| Base64Encoder            | A-Z, a-z, 0-9, +, / |
+| Base64Encoder (URI safe) | A-Z, a-z, 0-9, -, _ |
+
+#### Encode text
+
+Encode a byte array using one of the available encoders. The encoded text is returned as a string. 
+
+```csharp
+using IOUtils.Encoders;
+
+byte[] raw = "Hello, World!"u8.ToArray();
+
+// Any encoder listed above can be used here
+string encoded = Base36Encoder.Encode(raw);
+
+Console.WriteLine($"Encoded text: {encoded}");
+```
+
+#### Decode text
+
+Decode a string encoded using one of the available encoders. The decoded text is returned as a byte array. If the encoded text is not valid, a FormatException is thrown.
+
+```csharp
+using IOUtils.Encoders;
+
+string encoded = "FG3H7VQW7EEN6JWWNZMP";
+
+byte[] decoded = Base36Encoder.Decode(encoded);
+
+Console.WriteLine($"Decoded text: {System.Text.Encoding.UTF8.GetString(decoded)}");
 ```
 
 ## Contributions
