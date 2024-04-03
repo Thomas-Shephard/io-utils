@@ -17,8 +17,7 @@ public static class OptionInput {
     }
 
     public static bool GetYesNoOption(string question, IProvider? provider = null) {
-        // The index of the "Yes" option is 0
-        return GetOptionIndex(question, new[] { "Yes", "No" }, provider) == 0;
+        return GetEitherOrOption(question, "Yes", "No", provider);
     }
 
     public static bool GetEitherOrOption(string question, string trueOption, string falseOption, IProvider? provider = null) {
