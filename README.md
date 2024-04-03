@@ -1,5 +1,7 @@
 # IOUtils: Input and Output Utility Package for .NET
 
+[![Build, Test and Publish](https://github.com/Thomas-Shephard/io-utils/actions/workflows/build-test-and-publish.yml/badge.svg)](https://github.com/Thomas-Shephard/io-utils/actions/workflows/build-test-and-publish.yml)
+
 ## Installation
 
 Install the IOUtils NuGet package using the .NET CLI:
