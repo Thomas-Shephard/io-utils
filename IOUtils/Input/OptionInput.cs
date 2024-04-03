@@ -4,6 +4,12 @@ using IOUtils.Providers;
 namespace IOUtils.Input;
 
 public static class OptionInput {
+    public static T GetOption<T>(string question, Dictionary<string, T> options, IProvider? provider = null) {
+        string response = GetOption(question, options.Keys.ToArray(), provider);
+
+        return options[response];
+    }
+
     public static string GetOption(string question, string[] options, IProvider? provider = null) {
         int responseIndex = GetOptionIndex(question, options, provider);
 
@@ -11,8 +17,12 @@ public static class OptionInput {
     }
 
     public static bool GetYesNoOption(string question, IProvider? provider = null) {
-        // The index of the "Yes" option is 0
-        return GetOptionIndex(question, new[] { "Yes", "No" }, provider) == 0;
+        return GetEitherOrOption(question, "Yes", "No", provider);
+    }
+
+    public static bool GetEitherOrOption(string question, string trueOption, string falseOption, IProvider? provider = null) {
+        // The index of the first option is 0
+        return GetOptionIndex(question, new[] { trueOption, falseOption }, provider) is 0;
     }
 
     public static int GetOptionIndex(string question, string[] options, IProvider? provider = null) {
