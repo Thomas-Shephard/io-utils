@@ -47,6 +47,24 @@ using IOUtils.Input;
 string selectedOption = OptionInput.GetOption("Select an option", new[] { "Option 1", "Option 2", "Option 3" });
 int optionIndex = OptionInput.GetOptionIndex("Select an option", new[] { "Option 1", "Option 2", "Option 3" });
 bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
+bool tryAgain = OptionInput.GetEitherOrOption("What do you want to do?", "Try again", "Exit");
+
+// Alternatively, use a dictionary to map option descriptions to defined values
+Dictionary<string, int> options = new() {
+    { "Option 1", 1 },
+    { "Option 2", 2 },
+    { "Option 3", 3 }
+};
+
+int selectedOption = OptionInput.GetOption("Select an option", options);
+
+Dictionary<string, Action> actions = new() {
+    { "Option 1", () => Console.WriteLine("Option 1 selected") },
+    { "Option 2", () => Console.WriteLine("Option 2 selected") },
+    { "Option 3", () => Console.WriteLine("Option 3 selected") }
+};
+
+OptionInput.GetOption("Select an option", actions)();
 ```
 
 #### Retrieve file path from the user
