@@ -35,8 +35,8 @@ using IOUtils.Input;
 
 int value = NumberInput<int>.GetNumber("Enter a whole number");
 long value = NumberInput<long>.GetNumber("Enter a non-negative whole number", min: 0);
-float value = NumberInput<float>.GetNumber("Enter a negative number", max: 0);
-decimal value = NumberInput<decimal>.GetNumber("Enter a number between 0 and 100", min: 0, max: 100);
+float? value = NumberInput<float>.GetOptionalNumber("Enter a negative number (Press enter to skip)", max: 0);
+decimal? value = NumberInput<decimal>.GetOptionalNumber("Enter a number between 0 and 100 (Press enter to skip)", min: 0, max: 100);
 ```
 
 #### Retrieve option from the user
