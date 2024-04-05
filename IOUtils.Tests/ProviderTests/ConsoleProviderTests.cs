@@ -29,4 +29,24 @@ public class ConsoleProviderTests {
         Console.SetIn(reader);
         Assert.That(provider.ReadLine(), Is.EqualTo(TestMessage));
     }
+
+    [Test]
+    public void ConsoleProvider_LastInput_ReturnsNullIfNoInput() {
+        // Create a new ConsoleProvider instance to ensure that the LastInput property is null
+        IProvider provider = new ConsoleProvider();
+
+        Assert.That(provider.LastInput, Is.Null);
+    }
+
+    [Test]
+    public void ConsoleProvider_LastInput_ReturnsLastInput() {
+        IProvider provider = IProvider.Default;
+
+        using StringReader reader = new(TestMessage);
+        Console.SetIn(reader);
+
+        provider.ReadLine();
+
+        Assert.That(provider.LastInput, Is.EqualTo(TestMessage));
+    }
 }
