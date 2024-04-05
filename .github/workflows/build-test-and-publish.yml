@@ -7,6 +7,9 @@ on:
   pull_request:
     branches: [main]
 
+env:
+  DOTNET_VERSION: 8.x
+
 jobs:
   build-and-test:
     name: Build and Test
@@ -14,10 +17,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup .NET
+      - name: Setup .NET ${{ env.DOTNET_VERSION }}
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: x
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Output version of .NET
+        run: dotnet --version
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
@@ -37,7 +42,14 @@ jobs:
     needs: build-and-test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup .NET ${{ env.DOTNET_VERSION }}
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+      - name: Output version of .NET
+        run: dotnet --version
       - name: Add GitHub source
         run: dotnet nuget add source "https://nuget.pkg.github.com/Thomas-Shephard/index.json" --name "github.com" --username "Thomas-Shephard" --password ${{ secrets.NUGET_GITHUB_TOKEN }} --store-password-in-clear-text
       - name: Pack project
