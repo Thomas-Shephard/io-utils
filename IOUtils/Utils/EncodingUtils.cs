@@ -23,15 +23,13 @@ internal static class EncodingUtils {
         BigInteger decodedValue = BigInteger.Zero;
 
         foreach (char encodedChar in encoded) {
-            BigInteger multipliedBase = BigInteger.Multiply(decodedValue, charSet.Length);
-
             int charIndex = charSet.IndexOf(encodedChar);
 
             if (charIndex is -1) {
                 throw new FormatException($"Character '{encodedChar}' is not in the character set.");
             }
 
-            decodedValue = BigInteger.Add(multipliedBase, charIndex);
+            decodedValue = BigInteger.Add(BigInteger.Multiply(decodedValue, charSet.Length), charIndex);
         }
 
         return decodedValue.IsZero
