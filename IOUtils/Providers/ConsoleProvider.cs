@@ -1,8 +1,13 @@
 namespace IOUtils.Providers;
 
 public class ConsoleProvider : IProvider {
+    public string? LastInput { get; private set; }
+
     public string? ReadLine() {
-        return Console.ReadLine();
+        string? input = Console.ReadLine();
+
+        LastInput = input;
+        return input;
     }
 
     public void WriteLine(string? value) {

@@ -11,9 +11,13 @@ internal class MockProvider : IProvider {
 
     internal Queue<string?> InputLines { get; } = new();
     internal List<string?> OutputLines { get; } = new();
+    public string? LastInput { get; private set; }
 
     public string? ReadLine() {
-        return InputLines.Dequeue();
+        string? input = InputLines.Dequeue();
+
+        LastInput = input;
+        return input;
     }
 
     public void WriteLine(string? value) {
