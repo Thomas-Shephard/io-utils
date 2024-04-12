@@ -14,7 +14,35 @@ public class OptionTests {
     public void OptionInput_Options_ValidInput_ReturnsValue(string input, string[] options, string expected) {
         MockProvider mockProvider = new(input);
 
-        string actual = OptionInput.GetOption(Question, options, mockProvider);
+        string actual = OptionInput.GetOption(Question, options, provider: mockProvider);
+
+        Assert.That(actual, Is.EqualTo(expected));
+    }
+
+    [TestCase("1", new[] { "Option 1", "Option 2" }, "Option 1", "Option 1")]
+    [TestCase("2", new[] { "Option 1", "Option 2" }, "Option 1", "Option 2")]
+    [TestCase("1", new[] { "Option 1", "Option 2", "Option 3", "Option 4", "Option 5" }, "Option 3", "Option 1")]
+    [TestCase("2", new[] { "Option 1", "Option 2", "Option 3", "Option 4", "Option 5" }, "Option 3", "Option 2")]
+    [TestCase("3", new[] { "Option 1", "Option 2", "Option 3", "Option 4", "Option 5" }, "Option 3", "Option 3")]
+    [TestCase("4", new[] { "Option 1", "Option 2", "Option 3", "Option 4", "Option 5" }, "Option 3", "Option 4")]
+    [TestCase("5", new[] { "Option 1", "Option 2", "Option 3", "Option 4", "Option 5" }, "Option 3", "Option 5")]
+    public void OptionInput_OptionsWithDefault_ValidInput_ReturnsValue(string input, string[] options, string defaultOption, string expected) {
+        MockProvider mockProvider = new(input);
+
+        string actual = OptionInput.GetOption(Question, options, defaultOption, mockProvider);
+
+        Assert.That(actual, Is.EqualTo(expected));
+    }
+
+    [TestCase(new[] { "Option 1", "Option 2" }, "Option 1", "Option 1")]
+    [TestCase(new[] { "Option 1", "Option 2" }, "Option 2", "Option 2")]
+    [TestCase(new[] { "Option 1", "Option 2", "Option 3" }, "Option 3", "Option 3")]
+    [TestCase(new[] { "Option 1", "Option 2", "Option 3", "Option 4" }, "Option 4", "Option 4")]
+    [TestCase(new[] { "Option 1", "Option 2", "Option 3", "Option 4", "Option 5" }, "Option 3", "Option 3")]
+    public void OptionInput_OptionsWithDefault_ValidEmptyInput_ReturnsDefaultValue(string[] options, string defaultOption, string expected) {
+        MockProvider mockProvider = new(string.Empty);
+
+        string actual = OptionInput.GetOption(Question, options, defaultOption, mockProvider);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
@@ -32,7 +60,7 @@ public class OptionTests {
     public void OptionInput_Options_InvalidInput_ErrorOutput(string input, string[] options) {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => OptionInput.GetOption(Question, options, mockProvider));
+        Assert.Throws<InvalidOperationException>(() => OptionInput.GetOption(Question, options, provider: mockProvider));
 
         string expectedQuestion = Question;
 
@@ -50,5 +78,10 @@ public class OptionTests {
     [Test]
     public void OptionInput_Options_EmptyOptions_ThrowsException() {
         Assert.Throws<ArgumentException>(() => OptionInput.GetOption(Question, Array.Empty<string>()));
+    }
+
+    [Test]
+    public void OptionInput_OptionsWithDefault_DefaultOptionNotInOptions_ThrowsException() {
+        Assert.Throws<ArgumentException>(() => OptionInput.GetOption(Question, new[] { "Option 1", "Option 2" }, "Option 3"));
     }
 }

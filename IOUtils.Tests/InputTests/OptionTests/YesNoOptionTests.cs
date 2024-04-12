@@ -11,9 +11,31 @@ public class YesNoOptionTests {
     public void OptionInput_YesNo_ValidInput_ReturnsValue(string input, bool expected) {
         MockProvider mockProvider = new(input);
 
-        bool actual = OptionInput.GetYesNoOption(Question, mockProvider);
+        bool actual = OptionInput.GetYesNoOption(Question, provider: mockProvider);
 
         Assert.That(actual, Is.EqualTo(expected));
+    }
+
+    [TestCase("1", true, true)]
+    [TestCase("2", true, false)]
+    [TestCase("1", false, true)]
+    [TestCase("2", false, false)]
+    public void OptionInput_YesNoWithDefault_ValidInput_ReturnsValue(string input, bool defaultValue, bool expected) {
+        MockProvider mockProvider = new(input);
+
+        bool actual = OptionInput.GetYesNoOption(Question, defaultValue, mockProvider);
+
+        Assert.That(actual, Is.EqualTo(expected));
+    }
+
+    [TestCase(true, true)]
+    [TestCase(false, false)]
+    public void OptionInput_YesNoWithDefault_ValidEmptyInput_ReturnsDefaultValue(bool defaultValue, bool expected) {
+        MockProvider mockProvider = new(string.Empty);
+
+        bool actual = OptionInput.GetYesNoOption(Question, defaultValue, mockProvider);
+
+        Assert.That(actual, Is.EqualTo(defaultValue));
     }
 
     [TestCase("3")]
@@ -29,7 +51,7 @@ public class YesNoOptionTests {
     public void OptionInput_YesNo_InvalidInput_ErrorOutput(string input) {
         MockProvider mockProvider = new(input);
 
-        Assert.Throws<InvalidOperationException>(() => OptionInput.GetYesNoOption(Question, mockProvider));
+        Assert.Throws<InvalidOperationException>(() => OptionInput.GetYesNoOption(Question, provider: mockProvider));
 
         string[] expected = {
             $"""
