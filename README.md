@@ -41,7 +41,7 @@ decimal? value = NumberInput<decimal>.GetOptionalNumber("Enter a number between 
 
 #### Retrieve option from the user
 
-OptionInput is a class that allows for the retrieval of an option from the user.
+OptionInput is a class that allows for the retrieval of an option from the user. Default options can also be provided to make the input more user-friendly.
 
 ```csharp
 using IOUtils.Input;
@@ -50,6 +50,15 @@ string selectedOption = OptionInput.GetOption("Select an option", new[] { "Optio
 int optionIndex = OptionInput.GetOptionIndex("Select an option", new[] { "Option 1", "Option 2", "Option 3" });
 bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
 bool tryAgain = OptionInput.GetEitherOrOption("What do you want to do?", "Try again", "Exit");
+```
+
+```csharp
+using IOUtils.Input;
+
+string selectedOption = OptionInput.GetOption("Select an option", new[] { "Option 1", "Option 2", "Option 3" }, defaultOption: "Option 2");
+int optionIndex = OptionInput.GetOptionIndex("Select an option", new[] { "Option 1", "Option 2", "Option 3" }, defaultOption: "Option 3");
+bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?", defaultOption: true);
+bool tryAgain = OptionInput.GetEitherOrOption("What do you want to do?", "Try again", "Exit", defaultOption: true);
 ```
 
 Alternatively, a dictionary can be used to map descriptions to values.
@@ -64,6 +73,8 @@ Dictionary<string, int> options = new() {
 };
 
 int selectedOption = OptionInput.GetOption("Select an option", options);
+// Again, a default option can be provided if desired
+selectedOption = OptionInput.GetOption("Select an option", options, defaultOption: "Option 2");
 
 Console.WriteLine($"Value {selectedOption} returned");
 
@@ -74,6 +85,7 @@ Dictionary<string, Action> actions = new() {
 };
 
 OptionInput.GetOption("Select an option", actions)();
+OptionInput.GetOption("Select an option", actions, defaultOption: "Option 1")();
 ```
 
 #### Retrieve file path from the user
