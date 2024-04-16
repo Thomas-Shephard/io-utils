@@ -11,10 +11,18 @@ public static class TextInput {
         provider ??= IProvider.Default;
         provider.WriteLine(question);
 
+        List<string> errorMessages = new();
+
         string input;
         do {
+            if (errorMessages.Count > 0) {
+                foreach (string errorMessage in errorMessages) {
+                    provider.WriteLine(errorMessage);
+                }
+            }
+
             input = provider.ReadLine() ?? "";
-        } while (!validators.Validate(input, provider));
+        } while (!validators.Validate(input, out errorMessages));
 
         return input;
     }
