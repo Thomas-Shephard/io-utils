@@ -21,4 +21,8 @@
         <ProjectReference Include="..\IOUtils\IOUtils.csproj"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <Folder Include="DataTests\"/>
+    </ItemGroup>
+
 </Project>

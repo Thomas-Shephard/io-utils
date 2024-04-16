@@ -1,7 +1,8 @@
-using IOUtils.Encoders;
+using IOUtils.Data;
+using IOUtils.Tests.EncoderTests;
 using NUnit.Framework;
 
-namespace IOUtils.Tests.EncoderTests;
+namespace IOUtils.Tests.DataTests.EncoderTests;
 
 public class Base10Tests {
     private const string TestEncodedValue = "1415934836";
@@ -9,7 +10,7 @@ public class Base10Tests {
 
     [Test]
     public void Base10_Encode_Test_ReturnsEncodedString() {
-        string actual = Base10Encoder.Encode(TestRawValues.TestBytes);
+        string actual = Encoder.Base10.Encode(TestRawValues.TestBytes);
 
         Assert.That(actual, Is.EqualTo(TestEncodedValue));
     }
@@ -18,14 +19,14 @@ public class Base10Tests {
     public void Base10_Decode_Test_ReturnsDecodedBytes() {
         byte[] expected = TestRawValues.TestBytes;
 
-        byte[] actual = Base10Encoder.Decode(TestEncodedValue);
+        byte[] actual = Encoder.Base10.Decode(TestEncodedValue);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base10_Encode_HelloWorld_ReturnsEncodedString() {
-        string actual = Base10Encoder.Encode(TestRawValues.HelloWorldBytes);
+        string actual = Encoder.Base10.Encode(TestRawValues.HelloWorldBytes);
 
         Assert.That(actual, Is.EqualTo(HelloWorldEncodedValue));
     }
@@ -34,14 +35,14 @@ public class Base10Tests {
     public void Base10_Decode_HelloWorld_ReturnsDecodedBytes() {
         byte[] expected = TestRawValues.HelloWorldBytes;
 
-        byte[] actual = Base10Encoder.Decode(HelloWorldEncodedValue);
+        byte[] actual = Encoder.Base10.Decode(HelloWorldEncodedValue);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base10_Encode_EmptyArray_ReturnsEmptyString() {
-        string actual = Base10Encoder.Encode(TestRawValues.EmptyBytes);
+        string actual = Encoder.Base10.Encode(TestRawValues.EmptyBytes);
 
         Assert.That(actual, Is.Empty);
     }
@@ -50,13 +51,13 @@ public class Base10Tests {
     public void Base10_Decode_EmptyString_ReturnsEmptyArray() {
         byte[] expected = TestRawValues.EmptyBytes;
 
-        byte[] actual = Base10Encoder.Decode(string.Empty);
+        byte[] actual = Encoder.Base10.Decode(string.Empty);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base10_Decode_InvalidCharacter_ThrowsFormatException() {
-        Assert.Throws<FormatException>(() => Base10Encoder.Decode("1379A"));
+        Assert.Throws<ArgumentException>(() => Encoder.Base10.Decode("1379A"));
     }
 }
