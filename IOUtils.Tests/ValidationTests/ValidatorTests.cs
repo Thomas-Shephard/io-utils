@@ -11,13 +11,11 @@ public class ValidatorTests {
     [TestCase(3)]
     [TestCase(99)]
     public void Validator_Validate_TrueForValidValue(int value) {
-        MockProvider mockProvider = new();
-
-        bool actualValue = PositiveValueValidator.Validate(value, mockProvider);
+        bool actualValue = PositiveValueValidator.Validate(value, out string? errorMessage);
 
         Assert.Multiple(() => {
             Assert.That(actualValue, Is.True);
-            Assert.That(mockProvider.OutputLines, Is.EquivalentTo(Array.Empty<string>()));
+            Assert.That(errorMessage, Is.Null);
         });
     }
 
@@ -25,13 +23,11 @@ public class ValidatorTests {
     [TestCase(-1)]
     [TestCase(-99)]
     public void Validator_Validate_FalseForInvalidValue(int value) {
-        MockProvider mockProvider = new();
-
-        bool actualValue = PositiveValueValidator.Validate(value, mockProvider);
+        bool actualValue = PositiveValueValidator.Validate(value, out string? errorMessage);
 
         Assert.Multiple(() => {
             Assert.That(actualValue, Is.False);
-            Assert.That(mockProvider.OutputLines, Is.EquivalentTo(new[] { PositiveValueErrorMessage }));
+            Assert.That(errorMessage, Is.EqualTo(PositiveValueErrorMessage));
         });
     }
 }
