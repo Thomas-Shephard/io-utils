@@ -1,7 +1,8 @@
-using IOUtils.Encoders;
+using IOUtils.Data;
+using IOUtils.Tests.EncoderTests;
 using NUnit.Framework;
 
-namespace IOUtils.Tests.EncoderTests;
+namespace IOUtils.Tests.DataTests.EncoderTests;
 
 public class Base16Tests {
     private const string TestEncodedValue = "54657374";
@@ -9,7 +10,7 @@ public class Base16Tests {
 
     [Test]
     public void Base16_Encode_Test_ReturnsEncodedString() {
-        string actual = Base16Encoder.Encode(TestRawValues.TestBytes);
+        string actual = Encoder.Base16.Encode(TestRawValues.TestBytes);
 
         Assert.That(actual, Is.EqualTo(TestEncodedValue));
     }
@@ -18,14 +19,14 @@ public class Base16Tests {
     public void Base16_Decode_Test_ReturnsDecodedBytes() {
         byte[] expected = TestRawValues.TestBytes;
 
-        byte[] actual = Base16Encoder.Decode(TestEncodedValue);
+        byte[] actual = Encoder.Base16.Decode(TestEncodedValue);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base16_Encode_HelloWorld_ReturnsEncodedString() {
-        string actual = Base16Encoder.Encode(TestRawValues.HelloWorldBytes);
+        string actual = Encoder.Base16.Encode(TestRawValues.HelloWorldBytes);
 
         Assert.That(actual, Is.EqualTo(HelloWorldEncodedValue));
     }
@@ -34,14 +35,14 @@ public class Base16Tests {
     public void Base16_Decode_HelloWorld_ReturnsDecodedBytes() {
         byte[] expected = TestRawValues.HelloWorldBytes;
 
-        byte[] actual = Base16Encoder.Decode(HelloWorldEncodedValue);
+        byte[] actual = Encoder.Base16.Decode(HelloWorldEncodedValue);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base16_Encode_EmptyArray_ReturnsEmptyString() {
-        string actual = Base16Encoder.Encode(TestRawValues.EmptyBytes);
+        string actual = Encoder.Base16.Encode(TestRawValues.EmptyBytes);
 
         Assert.That(actual, Is.Empty);
     }
@@ -50,13 +51,13 @@ public class Base16Tests {
     public void Base16_Decode_EmptyString_ReturnsEmptyArray() {
         byte[] expected = TestRawValues.EmptyBytes;
 
-        byte[] actual = Base16Encoder.Decode(string.Empty);
+        byte[] actual = Encoder.Base16.Decode(string.Empty);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base16_Decode_InvalidCharacter_ThrowsFormatException() {
-        Assert.Throws<FormatException>(() => Base16Encoder.Decode("1379ADG"));
+        Assert.Throws<ArgumentException>(() => Encoder.Base16.Decode("1379ADG"));
     }
 }

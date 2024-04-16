@@ -105,26 +105,27 @@ string directoryPath = FileInput.GetDirectoryPath("Enter a directory path");
 
 The following encoders are available:
 
-| Encoder                  | Character set       |
-|--------------------------|---------------------|
-| Base2Encoder             | 0-1                 |
-| Base10Encoder            | 0-9                 |
-| Base16Encoder            | 0-9, A-F            |
-| Base36Encoder            | 0-9, A-Z            |
-| Base64Encoder            | A-Z, a-z, 0-9, +, / |
-| Base64Encoder (URI safe) | A-Z, a-z, 0-9, -, _ |
+| Encoder               | Character set       |
+|-----------------------|---------------------|
+| Encoder.Base2         | 0-1                 |
+| Encoder.Base10        | 0-9                 |
+| Encoder.Base16        | 0-9, A-F            |
+| Encoder.Base36        | 0-9, A-Z            |
+| Encoder.Base62        | 0-9, A-Z, a-z       |
+| Encoder.Base64        | A-Z, a-z, 0-9, +, / |
+| Encoder.Base64UriSafe | A-Z, a-z, 0-9, -, _ |
 
 #### Encode text
 
 Encode a byte array using one of the available encoders. The encoded text is returned as a string. 
 
 ```csharp
-using IOUtils.Encoders;
+using IOUtils.Data;
 
 byte[] raw = "Hello, World!"u8.ToArray();
 
 // Any encoder listed above can be used here
-string encoded = Base36Encoder.Encode(raw);
+string encoded = Encoder.Base36.Encode(raw);
 
 Console.WriteLine($"Encoded text: {encoded}");
 ```
@@ -134,11 +135,11 @@ Console.WriteLine($"Encoded text: {encoded}");
 Decode a string encoded using one of the available encoders. The decoded text is returned as a byte array. If the encoded text is not valid, a FormatException is thrown.
 
 ```csharp
-using IOUtils.Encoders;
+using IOUtils.Data;
 
 string encoded = "FG3H7VQW7EEN6JWWNZMP";
 
-byte[] decoded = Base36Encoder.Decode(encoded);
+byte[] decoded = Encoder.Base36.Decode(encoded);
 
 Console.WriteLine($"Decoded text: {System.Text.Encoding.UTF8.GetString(decoded)}");
 ```
