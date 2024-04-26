@@ -60,4 +60,26 @@ public class Base36Tests {
     public void Base36_Decode_InvalidCharacter_ThrowsFormatException() {
         Assert.Throws<ArgumentException>(() => Encoder.Base36.Decode("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ!"));
     }
+
+    [TestCase("01F23ZX456789")]
+    [TestCase("123B4TV56789")]
+    [TestCase("01234Y5678")]
+    [TestCase("12345678")]
+    [TestCase("01234567A")]
+    public void Base36_RequiresEncoding_Valid_ReturnsFalse(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base36.RequiresEncoding(bytes), Is.False);
+    }
+
+    [TestCase("g")]
+    [TestCase("100-001")]
+    [TestCase("9.981")]
+    [TestCase("62?")]
+    [TestCase("Hello, World!")]
+    public void Base36_RequiresEncoding_Invalid_ReturnsTrue(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base36.RequiresEncoding(bytes), Is.True);
+    }
 }

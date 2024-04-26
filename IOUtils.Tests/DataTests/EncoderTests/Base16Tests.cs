@@ -60,4 +60,26 @@ public class Base16Tests {
     public void Base16_Decode_InvalidCharacter_ThrowsFormatException() {
         Assert.Throws<ArgumentException>(() => Encoder.Base16.Decode("1379ADG"));
     }
+
+    [TestCase("01F23456789")]
+    [TestCase("123B456789")]
+    [TestCase("012345678")]
+    [TestCase("12345678")]
+    [TestCase("01234567A")]
+    public void Base16_RequiresEncoding_Valid_ReturnsFalse(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base16.RequiresEncoding(bytes), Is.False);
+    }
+
+    [TestCase("G")]
+    [TestCase("100-001")]
+    [TestCase("9.981")]
+    [TestCase("62?")]
+    [TestCase("Hello, World!")]
+    public void Base16_RequiresEncoding_Invalid_ReturnsTrue(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base16.RequiresEncoding(bytes), Is.True);
+    }
 }

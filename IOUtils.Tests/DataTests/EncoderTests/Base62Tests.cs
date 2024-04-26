@@ -60,4 +60,26 @@ public class Base62Tests {
     public void Base62_Decode_InvalidCharacter_ThrowsFormatException() {
         Assert.Throws<ArgumentException>(() => Encoder.Base62.Decode("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ-_"));
     }
+
+    [TestCase("01F23ZXfdmcxc456789")]
+    [TestCase("123B4TzxV56789")]
+    [TestCase("01234Yasd5678")]
+    [TestCase("12345678")]
+    [TestCase("012345z67A")]
+    public void Base62_RequiresEncoding_Valid_ReturnsFalse(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base62.RequiresEncoding(bytes), Is.False);
+    }
+
+    [TestCase("!")]
+    [TestCase("100-001")]
+    [TestCase("9.981")]
+    [TestCase("62?")]
+    [TestCase("Hello, World!")]
+    public void Base62_RequiresEncoding_Invalid_ReturnsTrue(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base62.RequiresEncoding(bytes), Is.True);
+    }
 }
