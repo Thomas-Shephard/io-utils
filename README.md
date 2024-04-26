@@ -117,7 +117,7 @@ The following encoders are available:
 
 #### Encode text
 
-Encode a byte array using one of the available encoders. The encoded text is returned as a string. 
+Encode a byte array using one of the available encoders. The encoded text is returned as a string.
 
 ```csharp
 using IOUtils.Data;
@@ -129,6 +129,18 @@ string encoded = Encoder.Base36.Encode(raw);
 
 Console.WriteLine($"Encoded text: {encoded}");
 ```
+
+To check if a byte array requires encoding, the RequiresEncoding method can be used:
+
+```csharp
+using IOUtils.Data;
+
+byte[] raw = "Hello, World!"u8.ToArray();
+
+bool requiresEncoding = Encoder.Base36.RequiresEncoding(raw);
+```
+
+```csharp
 
 #### Decode text
 
