@@ -12,8 +12,6 @@ public class Encoder {
     public static readonly Encoder Base64 = new("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/");
     public static readonly Encoder Base64UriSafe = new("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_");
 
-    public char[] Characters { get; }
-
     public Encoder(char[] characters) {
         if (characters.Length < 2)
             throw new ArgumentException("The encoder must have at least two characters", nameof(characters));
@@ -25,6 +23,8 @@ public class Encoder {
     }
 
     public Encoder(string characters) : this(characters.ToCharArray()) { }
+
+    public char[] Characters { get; }
 
     public string Encode(byte[] bytes, bool isBigEndian = true) {
         BigInteger dividend = new(bytes, true, isBigEndian);
@@ -55,5 +55,9 @@ public class Encoder {
         return decodedValue.IsZero
             ? Array.Empty<byte>()
             : decodedValue.ToByteArray(true, isBigEndian);
+    }
+
+    public bool RequiresEncoding(IEnumerable<byte> bytes) {
+        return bytes.Any(b => Array.IndexOf(Characters, (char)b) is -1);
     }
 }
