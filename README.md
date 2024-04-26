@@ -140,8 +140,6 @@ byte[] raw = "Hello, World!"u8.ToArray();
 bool requiresEncoding = Encoder.Base36.RequiresEncoding(raw);
 ```
 
-```csharp
-
 #### Decode text
 
 Decode a string encoded using one of the available encoders. The decoded text is returned as a byte array. If the encoded text is not valid, a FormatException is thrown.
