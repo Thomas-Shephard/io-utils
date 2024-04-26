@@ -60,4 +60,26 @@ public class Base10Tests {
     public void Base10_Decode_InvalidCharacter_ThrowsFormatException() {
         Assert.Throws<ArgumentException>(() => Encoder.Base10.Decode("1379A"));
     }
+
+    [TestCase("0123456789")]
+    [TestCase("123456789")]
+    [TestCase("012345678")]
+    [TestCase("12345678")]
+    [TestCase("01234567")]
+    public void Base10_RequiresEncoding_Valid_ReturnsFalse(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base10.RequiresEncoding(bytes), Is.False);
+    }
+
+    [TestCase("A")]
+    [TestCase("100A001")]
+    [TestCase("9.981")]
+    [TestCase("6E2")]
+    [TestCase("E")]
+    public void Base10_RequiresEncoding_Invalid_ReturnsTrue(string raw) {
+        byte[] bytes = raw.Select(c => (byte)c).ToArray();
+
+        Assert.That(Encoder.Base10.RequiresEncoding(bytes), Is.True);
+    }
 }
