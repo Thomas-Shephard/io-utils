@@ -48,7 +48,7 @@ public class YesNoOptionTests {
     [TestCase("No")]
     [TestCase("")]
     [TestCase(null)]
-    public void OptionInput_YesNo_InvalidInput_ErrorOutput(string input) {
+    public void OptionInput_YesNo_InvalidInput_ErrorOutput(string? input) {
         MockProvider mockProvider = new(input);
 
         Assert.Throws<InvalidOperationException>(() => OptionInput.GetYesNoOption(Question, provider: mockProvider));
