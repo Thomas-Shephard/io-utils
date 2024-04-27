@@ -28,7 +28,7 @@ public class IntegerTests {
     [TestCase("Pi")]
     [TestCase("")]
     [TestCase(null)]
-    public void NumberInput_Integer_InvalidInput_ErrorOutput(string input) {
+    public void NumberInput_Integer_InvalidInput_ErrorOutput(string? input) {
         MockProvider mockProvider = new(input);
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<ulong>.GetNumber(Question, provider: mockProvider));

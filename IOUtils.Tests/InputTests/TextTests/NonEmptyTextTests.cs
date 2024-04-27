@@ -20,7 +20,7 @@ public class NonEmptyTextTests {
     [TestCase(null)]
     [TestCase("")]
     [TestCase(" ")]
-    public void TextInput_NonEmptyText_InvalidInput_ErrorOutput(string value) {
+    public void TextInput_NonEmptyText_InvalidInput_ErrorOutput(string? value) {
         MockProvider mockProvider = new(value);
 
         Assert.Throws<InvalidOperationException>(() => TextInput.GetNonEmptyText(Question, mockProvider));

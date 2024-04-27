@@ -1,3 +1,4 @@
+using IOUtils.Input;
 using IOUtils.Providers;
 using NUnit.Framework;
 
@@ -48,5 +49,38 @@ public class ConsoleProviderTests {
         provider.ReadLine();
 
         Assert.That(provider.LastInput, Is.EqualTo(TestMessage));
+    }
+
+    [Test]
+    public void ConsoleProvider_TextInput_GetTextFromConsole() {
+        using StreamWriter writer = new(TestFilePath);
+        Console.SetOut(writer);
+        Console.SetIn(new StringReader(TestMessage));
+
+        string input = TextInput.GetText("Enter some text");
+
+        Assert.That(input, Is.EqualTo(TestMessage));
+    }
+
+    [Test]
+    public void ConsoleProvider_NumberInput_GetNumberFromConsole() {
+        using StreamWriter writer = new(TestFilePath);
+        Console.SetOut(writer);
+        Console.SetIn(new StringReader("42"));
+
+        int input = NumberInput<int>.GetNumber("Enter a number");
+
+        Assert.That(input, Is.EqualTo(42));
+    }
+
+    [Test]
+    public void ConsoleProvider_OptionalNumberInput_GetNumberFromConsole() {
+        using StreamWriter writer = new(TestFilePath);
+        Console.SetOut(writer);
+        Console.SetIn(new StringReader("12.2"));
+
+        float? input = NumberInput<float>.GetOptionalNumber("Enter a number");
+
+        Assert.That(input, Is.EqualTo(12.2f));
     }
 }

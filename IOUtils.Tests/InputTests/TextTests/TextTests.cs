@@ -12,7 +12,7 @@ public class TextTests {
     [TestCase(null, "")]
     [TestCase("", "")]
     [TestCase(" ", " ")]
-    public void TextInput_Text_ValidInput_ReturnsValue(string value, string expected) {
+    public void TextInput_Text_ValidInput_ReturnsValue(string? value, string expected) {
         MockProvider mockProvider = new(value);
 
         string actual = TextInput.GetText(Question, provider: mockProvider);

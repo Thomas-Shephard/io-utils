@@ -28,7 +28,7 @@ public class FloatTests {
     [TestCase("Pi")]
     [TestCase("")]
     [TestCase(null)]
-    public void NumberInput_Float_InvalidInput_ErrorOutput(string input) {
+    public void NumberInput_Float_InvalidInput_ErrorOutput(string? input) {
         MockProvider mockProvider = new(input);
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<float>.GetNumber(Question, provider: mockProvider));
