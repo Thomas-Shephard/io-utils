@@ -4,21 +4,29 @@ using NUnit.Framework;
 namespace IOUtils.Tests.UtilTests;
 
 public class NumberTypeTests {
-    [TestCase(3.0d)]
-    [TestCase(99.99)]
-    [TestCase(1.0F)]
-    [TestCase(Math.PI)]
-    [TestCase(0.001F)]
-    public void NumberTypeUtils_IsFloatingPoint_TrueForFloatingPoint<T>(T value) {
+    [TestCase(TypeArgs = new[] { typeof(float) })]
+    [TestCase(TypeArgs = new[] { typeof(decimal) })]
+    [TestCase(TypeArgs = new[] { typeof(double) })]
+    public void NumberTypeUtils_IsFloatingPoint_TrueForFloatingPoint<T>() {
         Assert.That(NumberTypeUtils.IsFloatingPoint<T>(), Is.True);
     }
 
-    [TestCase(1)]
-    [TestCase(99L)]
-    [TestCase(3U)]
-    [TestCase(0)]
-    [TestCase(int.MaxValue)]
-    public void NumberTypeUtils_IsFloatingPoint_FalseForInteger<T>(T value) {
+    [TestCase(TypeArgs = new[] { typeof(int) })]
+    [TestCase(TypeArgs = new[] { typeof(uint) })]
+    [TestCase(TypeArgs = new[] { typeof(long) })]
+    [TestCase(TypeArgs = new[] { typeof(ulong) })]
+    [TestCase(TypeArgs = new[] { typeof(short) })]
+    public void NumberTypeUtils_IsFloatingPoint_FalseForInteger<T>() {
+        Assert.That(NumberTypeUtils.IsFloatingPoint<T>(), Is.False);
+    }
+
+    [TestCase(TypeArgs = new[] { typeof(string) })]
+    [TestCase(TypeArgs = new[] { typeof(byte) })]
+    [TestCase(TypeArgs = new[] { typeof(char) })]
+    [TestCase(TypeArgs = new[] { typeof(bool) })]
+    [TestCase(TypeArgs = new[] { typeof(string[]) })]
+    [TestCase(TypeArgs = new[] { typeof(List<double>) })]
+    public void NumberTypeUtils_IsFloatingPoint_FalseForOtherTypes<T>() {
         Assert.That(NumberTypeUtils.IsFloatingPoint<T>(), Is.False);
     }
 }
