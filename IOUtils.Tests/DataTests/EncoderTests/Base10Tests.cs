@@ -1,5 +1,4 @@
 using IOUtils.Data;
-using IOUtils.Tests.EncoderTests;
 using NUnit.Framework;
 
 namespace IOUtils.Tests.DataTests.EncoderTests;

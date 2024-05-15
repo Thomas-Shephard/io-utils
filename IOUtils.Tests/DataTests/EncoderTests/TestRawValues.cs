@@ -1,4 +1,4 @@
-namespace IOUtils.Tests.EncoderTests;
+namespace IOUtils.Tests.DataTests.EncoderTests;
 
 public static class TestRawValues {
     public static readonly byte[] TestBytes = "Test"u8.ToArray();
