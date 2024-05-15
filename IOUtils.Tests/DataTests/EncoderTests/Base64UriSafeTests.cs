@@ -1,5 +1,4 @@
 using IOUtils.Data;
-using IOUtils.Tests.EncoderTests;
 using NUnit.Framework;
 
 namespace IOUtils.Tests.DataTests.EncoderTests;
@@ -11,7 +10,7 @@ public class Base64UriSafeTests {
 
     [Test]
     public void Base64_Encode_Test_ReturnsEncodedString() {
-        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.TestBytes, true);
+        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.TestBytes);
 
         Assert.That(actual, Is.EqualTo(TestEncodedValue));
     }
@@ -20,14 +19,14 @@ public class Base64UriSafeTests {
     public void Base64_Decode_Test_ReturnsDecodedBytes() {
         byte[] expected = TestRawValues.TestBytes;
 
-        byte[] actual = Encoder.Base64UriSafe.Decode(TestEncodedValue, true);
+        byte[] actual = Encoder.Base64UriSafe.Decode(TestEncodedValue);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base64_Encode_HelloWorld_ReturnsEncodedString() {
-        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.HelloWorldBytes, true);
+        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.HelloWorldBytes);
 
         Assert.That(actual, Is.EqualTo(HelloWorldEncodedValue));
     }
@@ -36,14 +35,14 @@ public class Base64UriSafeTests {
     public void Base64_Decode_HelloWorld_ReturnsDecodedBytes() {
         byte[] expected = TestRawValues.HelloWorldBytes;
 
-        byte[] actual = Encoder.Base64UriSafe.Decode(HelloWorldEncodedValue, true);
+        byte[] actual = Encoder.Base64UriSafe.Decode(HelloWorldEncodedValue);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base64_Encode_Base64SpecialBytes_ReturnsEncodedString() {
-        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.Base64SpecialBytes, true);
+        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.Base64SpecialBytes);
 
         Assert.That(actual, Is.EqualTo(Base64SpecialEncodedValue));
     }
@@ -52,14 +51,14 @@ public class Base64UriSafeTests {
     public void Base64_Decode_Base64SpecialBytes_ReturnsDecodedBytes() {
         byte[] expected = TestRawValues.Base64SpecialBytes;
 
-        byte[] actual = Encoder.Base64UriSafe.Decode(Base64SpecialEncodedValue, true);
+        byte[] actual = Encoder.Base64UriSafe.Decode(Base64SpecialEncodedValue);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base64_Encode_EmptyArray_ReturnsEmptyString() {
-        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.EmptyBytes, true);
+        string actual = Encoder.Base64UriSafe.Encode(TestRawValues.EmptyBytes);
 
         Assert.That(actual, Is.Empty);
     }
@@ -68,14 +67,14 @@ public class Base64UriSafeTests {
     public void Base64_Decode_EmptyString_ReturnsEmptyArray() {
         byte[] expected = TestRawValues.EmptyBytes;
 
-        byte[] actual = Encoder.Base64UriSafe.Decode(string.Empty, true);
+        byte[] actual = Encoder.Base64UriSafe.Decode(string.Empty);
 
         Assert.That(actual, Is.EqualTo(expected));
     }
 
     [Test]
     public void Base64_Decode_InvalidCharacter_ThrowsFormatException() {
-        Assert.Throws<ArgumentException>(() => Encoder.Base64UriSafe.Decode("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ+/", true));
+        Assert.Throws<ArgumentException>(() => Encoder.Base64UriSafe.Decode("0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ+/"));
     }
 
     [TestCase("01F23ZXfdmcxc456789-")]
