@@ -4,7 +4,7 @@ namespace IOUtils.Utils;
 
 public static class ValidationUtils {
     public static bool Validate<T>(this IEnumerable<Validator<T>>? validators, T value, out List<string> errorMessages) {
-        errorMessages = new List<string>();
+        errorMessages = [];
 
         if (validators is null)
             return true;

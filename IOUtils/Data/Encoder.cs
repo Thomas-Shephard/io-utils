@@ -53,7 +53,7 @@ public class Encoder {
         }
 
         return decodedValue.IsZero
-            ? Array.Empty<byte>()
+            ? []
             : decodedValue.ToByteArray(true, isBigEndian);
     }
 

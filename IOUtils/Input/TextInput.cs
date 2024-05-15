@@ -11,7 +11,7 @@ public static class TextInput {
         provider ??= IProvider.Default;
         provider.WriteLine(question);
 
-        List<string> errorMessages = new();
+        List<string> errorMessages = [];
 
         string input;
         do {
@@ -28,6 +28,6 @@ public static class TextInput {
     }
 
     public static string GetNonEmptyText(string question, IProvider? provider = null) {
-        return GetText(question, new[] { NotEmptyValidator }, provider);
+        return GetText(question, [NotEmptyValidator], provider);
     }
 }

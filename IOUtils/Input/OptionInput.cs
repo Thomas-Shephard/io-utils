@@ -28,7 +28,7 @@ public static class OptionInput {
         };
 
         // The index of the first option is 0
-        return GetOptionIndex(question, new[] { trueOption, falseOption }, defaultOptionString, provider) is 0;
+        return GetOptionIndex(question, [trueOption, falseOption], defaultOptionString, provider) is 0;
     }
 
     // If the default option is provided multiple times, the first occurrence will be the default
