@@ -46,8 +46,8 @@ OptionInput is a class that allows for the retrieval of an option from the user.
 ```csharp
 using IOUtils.Input;
 
-string selectedOption = OptionInput.GetOption("Select an option", new[] { "Option 1", "Option 2", "Option 3" });
-int optionIndex = OptionInput.GetOptionIndex("Select an option", new[] { "Option 1", "Option 2", "Option 3" });
+string selectedOption = OptionInput.GetOption("Select an option", ["Option 1", "Option 2", "Option 3"]);
+int optionIndex = OptionInput.GetOptionIndex("Select an option", ["Option 1", "Option 2", "Option 3"]);
 bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?");
 bool tryAgain = OptionInput.GetEitherOrOption("What do you want to do?", "Try again", "Exit");
 ```
@@ -55,8 +55,8 @@ bool tryAgain = OptionInput.GetEitherOrOption("What do you want to do?", "Try ag
 ```csharp
 using IOUtils.Input;
 
-string selectedOption = OptionInput.GetOption("Select an option", new[] { "Option 1", "Option 2", "Option 3" }, defaultOption: "Option 2");
-int optionIndex = OptionInput.GetOptionIndex("Select an option", new[] { "Option 1", "Option 2", "Option 3" }, defaultOption: "Option 3");
+string selectedOption = OptionInput.GetOption("Select an option", ["Option 1", "Option 2", "Option 3"], defaultOption: "Option 2");
+int optionIndex = OptionInput.GetOptionIndex("Select an option", ["Option 1", "Option 2", "Option 3"], defaultOption: "Option 3");
 bool doSomething = OptionInput.GetYesNoOption("Do you want to do something?", defaultOption: true);
 bool tryAgain = OptionInput.GetEitherOrOption("What do you want to do?", "Try again", "Exit", defaultOption: true);
 ```

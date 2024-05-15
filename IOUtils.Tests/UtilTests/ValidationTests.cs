@@ -9,7 +9,7 @@ public class ValidationTests {
     private const string Sub100ErrorMessage = "Value must be less than 100";
     private static readonly Validator<int> PositiveValueValidator = new(value => value > 0, PositiveValueErrorMessage);
     private static readonly Validator<int> Sub100Validator = new(value => value < 100, Sub100ErrorMessage);
-    private static readonly Validator<int>[] Validators = { PositiveValueValidator, Sub100Validator };
+    private static readonly Validator<int>[] Validators = [PositiveValueValidator, Sub100Validator];
 
     [TestCase(-1)]
     [TestCase(0)]

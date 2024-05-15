@@ -77,7 +77,7 @@ public class OptionMapTests {
 
         string expectedErrorMessage = $"That was not valid, enter a whole number between 1 and {OptionMap.Count}";
 
-        string[] expected = { expectedQuestion, expectedErrorMessage };
+        string[] expected = [expectedQuestion, expectedErrorMessage];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }

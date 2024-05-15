@@ -25,10 +25,10 @@ public class NonEmptyTextTests {
 
         Assert.Throws<InvalidOperationException>(() => TextInput.GetNonEmptyText(Question, mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             "That was not valid, enter some text"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }

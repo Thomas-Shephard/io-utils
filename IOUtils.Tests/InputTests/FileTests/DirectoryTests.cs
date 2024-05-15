@@ -23,10 +23,10 @@ public class DirectoryTests {
 
         Assert.Throws<InvalidOperationException>(() => FileInput.GetDirectoryPath(Question, mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             "That was not valid, the directory does not exist"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }

@@ -70,18 +70,18 @@ public class OptionTests {
 
         string expectedErrorMessage = $"That was not valid, enter a whole number between 1 and {options.Length}";
 
-        string[] expected = { expectedQuestion, expectedErrorMessage };
+        string[] expected = [expectedQuestion, expectedErrorMessage];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
 
     [Test]
     public void OptionInput_Options_EmptyOptions_ThrowsException() {
-        Assert.Throws<ArgumentException>(() => OptionInput.GetOption(Question, Array.Empty<string>()));
+        Assert.Throws<ArgumentException>(() => OptionInput.GetOption(Question, []));
     }
 
     [Test]
     public void OptionInput_OptionsWithDefault_DefaultOptionNotInOptions_ThrowsException() {
-        Assert.Throws<ArgumentException>(() => OptionInput.GetOption(Question, new[] { "Option 1", "Option 2" }, "Option 3"));
+        Assert.Throws<ArgumentException>(() => OptionInput.GetOption(Question, ["Option 1", "Option 2"], "Option 3"));
     }
 }
