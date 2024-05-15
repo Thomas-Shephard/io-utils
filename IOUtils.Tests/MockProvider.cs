@@ -9,8 +9,8 @@ internal class MockProvider : IProvider {
         }
     }
 
-    internal Queue<string?> InputLines { get; } = new();
-    internal List<string?> OutputLines { get; } = new();
+    internal Queue<string?> InputLines { get; } = [];
+    internal List<string?> OutputLines { get; } = [];
     public string? LastInput { get; private set; }
 
     public string? ReadLine() {

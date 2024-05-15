@@ -29,10 +29,10 @@ public class FileTests {
 
         Assert.Throws<InvalidOperationException>(() => FileInput.GetFilePath(Question, mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             "That was not valid, the file does not exist"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }

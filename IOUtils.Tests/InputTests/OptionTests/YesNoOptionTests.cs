@@ -53,14 +53,14 @@ public class YesNoOptionTests {
 
         Assert.Throws<InvalidOperationException>(() => OptionInput.GetYesNoOption(Question, provider: mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             $"""
              {Question}
              1. Yes
              2. No
              """,
             "That was not valid, enter a whole number between 1 and 2"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }

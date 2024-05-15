@@ -41,10 +41,10 @@ public class OptionalIntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<ulong>.GetOptionalNumber(Question, provider: mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} {ErrorMessageSkip}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -85,10 +85,10 @@ public class OptionalIntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetOptionalNumber(Question, min, provider: mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} greater than or equal to {min} {ErrorMessageSkip}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -129,10 +129,10 @@ public class OptionalIntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetOptionalNumber(Question, max: max, provider: mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} less than or equal to {max} {ErrorMessageSkip}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -173,10 +173,10 @@ public class OptionalIntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetOptionalNumber(Question, min, max, mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} between {min} and {max} {ErrorMessageSkip}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -191,10 +191,10 @@ public class OptionalIntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetOptionalNumber(Question, minAndMax, minAndMax, mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} of {minAndMax} {ErrorMessageSkip}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }

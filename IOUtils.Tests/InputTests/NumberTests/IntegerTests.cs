@@ -33,10 +33,10 @@ public class IntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<ulong>.GetNumber(Question, provider: mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             ErrorMessage
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -64,10 +64,10 @@ public class IntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetNumber(Question, min, provider: mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} greater than or equal to {min}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -95,10 +95,10 @@ public class IntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetNumber(Question, max: max, provider: mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} less than or equal to {max}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -126,10 +126,10 @@ public class IntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetNumber(Question, min, max, mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} between {min} and {max}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
@@ -144,10 +144,10 @@ public class IntegerTests {
 
         Assert.Throws<InvalidOperationException>(() => NumberInput<T>.GetNumber(Question, minAndMax, minAndMax, mockProvider));
 
-        string[] expected = {
+        string[] expected = [
             Question,
             $"{ErrorMessage} of {minAndMax}"
-        };
+        ];
 
         Assert.That(mockProvider.OutputLines, Is.EquivalentTo(expected));
     }
