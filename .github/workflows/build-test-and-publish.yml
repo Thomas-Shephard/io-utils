@@ -31,9 +31,9 @@ jobs:
         id: test
         run: dotnet test --configuration Release --no-build --verbosity normal --collect:"XPlat Code Coverage" --results-directory ./coverage
       - name: Check code coverage
-        uses: Thomas-Shephard/coverage-checker@v0.5.1
+        uses: Thomas-Shephard/coverage-checker@v0.6.0
         with:
-          format: 'cobertura'
+          format: 'Cobertura'
           glob-pattern: 'coverage/**/coverage.cobertura.xml'
           line-threshold: 100
           branch-threshold: 100
