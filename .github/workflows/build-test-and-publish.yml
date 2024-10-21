@@ -33,7 +33,7 @@ jobs:
       - name: Check code coverage
         uses: Thomas-Shephard/coverage-checker@v0.6.0
         with:
-          format: 'cobertura'
+          format: 'Cobertura'
           glob-pattern: 'coverage/**/coverage.cobertura.xml'
           line-threshold: 100
           branch-threshold: 100
